@@ -266,5 +266,26 @@ def main():
     else:
         st.write("No data available for the selected date range.")
 
+    # --- Elo Calculation Explanation ---
+    st.header("How Elo Ratings are Calculated")
+    with st.expander("See Explanation"):
+        st.markdown("""
+        The Elo rating system calculates relative skill levels.  Here's how it works in this F1 app:
+
+        *   **Initial Rating:** Each driver and constructor begins with an initial Elo rating of 1000.
+        *   **Expected vs. Actual:** Before each race, the system calculates an *expected* outcome for each driver and team, based on their current Elo ratings.  After the race, this is compared to the *actual* outcome.
+        *   **Rating Updates:** Ratings are adjusted based on the difference between expected and actual results.  Outperforming expectations leads to a rating increase; underperforming leads to a decrease.
+        *   **K-Factor:**  The K-factor determines the *magnitude* of rating changes.  A higher K-factor means larger, more volatile updates.
+        *   **Constructor (Team) Elo:**  Each team *also* has an Elo rating, reflecting the overall performance of the car and team operations.
+        *   **Team Influence:** A driver's Elo change is influenced by their team's Elo.  A driver in a strong car (high team Elo) is expected to perform well.  Their rating changes are more sensitive to their performance *relative to their teammate*.
+
+        **Key Concepts:**
+
+        *   **Zero-Sum:** Elo point gains by some are balanced by losses by others.
+        *   **Relative Skill:** Elo measures relative skill within the group (drivers and teams in F1).
+        *   **Predictive Power:** Elo differences predict the probability of one driver/team beating another.
+        * **Team adjusted individual performance:** The driver's elo is not only about finishing position, but about relative performance compared to the teammate, considering the strength of the team.
+        """)
+
 if __name__ == '__main__':
     main()
